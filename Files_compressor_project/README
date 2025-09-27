@@ -1,4 +1,24 @@
-FILES COMPRESSOR:
-- Using huffman code algorithm to compress/extract binary files and folders.
-- Recursively compress/extract a folder with folders and binary files inside it.
-- User interface: an easy to use text user interface for the program.
+FILES COMPRESSOR 🗜️🐍
+
+Language: Python
+
+Description:
+Files Compressor is an advanced Python project that leverages the Huffman coding algorithm to efficiently compress and extract binary files and entire folder structures. This project demonstrates strong proficiency in algorithms, data structures, and Python programming, providing a practical and robust solution for file compression tasks.
+
+Key Features:
+
+* Huffman Compression: Uses the classic Huffman coding algorithm to compress binary files with optimal space efficiency.
+* Recursive Folder Handling: Compresses or extracts entire directories, preserving the folder structure and handling nested files seamlessly.
+* User-Friendly Interface: Provides a clean and intuitive text-based interface, making it easy for users to compress or extract files with just a few commands.
+* Cross-Platform Compatibility: Runs smoothly on any system with Python installed.
+
+Why This Project Stands Out:
+
+* Demonstrates mastery of Python programming and algorithmic problem-solving.
+* Shows ability to implement complex recursive file operations.
+* Combines performance, usability, and robustness in a single tool.
+
+Usage Example:
+
+* python main.py
+  Follow the on-screen instructions to compress or extract files and folders.
