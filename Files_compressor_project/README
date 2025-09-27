@@ -1,0 +1,4 @@
+FILES COMPRESSOR:
+- Using huffman code algorithm to compress/extract binary files and folders.
+- Recursively compress/extract a folder with folders and binary files inside it.
+- User interface: an easy to use text user interface for the program.
