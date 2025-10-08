@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+
+    <!-- SET IDE TAB WIDTH IN THIS VALUE -->
+    <property name="tabWidth" value="4"/>
+
+    <!-- Don't check non-Java files -->
+    <property name="fileExtensions" value="java"/>
+
+    <module name="TreeWalker">
+
+        <!-- Naming conventions -->
+        <module name="TypeName">
+            <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+            <message key="name.invalidPattern"
+                     value="Type names must be in PascalCase (e.g., 'MyClass')."/>
+        </module>
+        <module name="LocalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+            <message key="name.invalidPattern"
+                     value="Variable names must be in camelCase (e.g., 'myVariable')."/>
+        </module>
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+            <message key="name.invalidPattern"
+                     value="Field names must be in camelCase (e.g., 'myField')."/>
+        </module>
+        <module name="MethodName">
+            <property name="format" value="^(?!and(?:$|[A-Z]))(?!.*And(?:$|[A-Z]))[a-z][a-zA-Z0-9]*$"/>
+            <message key="name.invalidPattern"
+                     value="Method names must be in camelCase (e.g., 'myMethod') and not include the word and."/>
+        </module>
+        <module name="ConstantName">
+            <property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$"/>
+            <message key="name.invalidPattern"
+                     value="Constant names must be in UPPER_CASE with single underscores (e.g., 'MY_CONSTANT')."/>
+        </module>
+
+        <!-- Enforce no magic numbers -->
+        <module name="MagicNumber">
+            <property name="ignoreHashCodeMethod" value="true"/>
+            <property name="ignoreAnnotation" value="true"/>
+        </module>
+
+        <!-- Enforce string literals to be declared in constants -->
+        <module name="MatchXpath">
+            <property name="query"
+                      value="//STRING_LITERAL[not(ancestor::VARIABLE_DEF[./MODIFIERS/LITERAL_STATIC and ./MODIFIERS/FINAL])]"/>
+            <message key="matchxpath.match"
+                     value="String literals must be declared in constants and not used directly."/>
+        </module>
+
+        <!-- Enforce indentation using tabs -->
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="^\t*[ ]+(?!.*[,\)\{]\s*$).*"/>
+            <property name="message"
+                      value="Indentation should use tabs, not spaces."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+
+        <!-- Bracket (brace) style -->
+        <module name="LeftCurly">
+            <property name="option" value="eol"/>
+            <message key="line.break.after"
+                     value="Left curly brace should always appear at the end of a line."/>
+            <message key="line.new"
+                     value="Left curly brace should always appear at the end of a line."/>
+            <message key="line.previous"
+                     value="Left curly brace should always appear at the end of a line."/>
+        </module>
+        <module name="RightCurly">
+            <property name="option" value="same"/>
+            <message key="line.alone"
+                     value="Left curly brace should always appear at the end of a line."/>
+            <message key="line.break.before"
+                     value="Left curly brace should always appear at the end of a line."/>
+            <message key="line.same"
+                     value="Left curly brace should always appear at the end of a line."/>
+        </module>
+
+        <!-- Method limitations -->
+        <module name="MethodLength">
+            <property name="max" value="40"/>
+        </module>
+        <module name="ParameterNumber">
+            <property name="max" value="4"/>
+        </module>
+
+        <!-- Enforce JavaDoc above public classes + interfaces -->
+        <module name="MissingJavadocType"/>
+        <!-- Enforce @author in class JavaDoc -->
+        <module name="WriteTag">
+            <property name="tokens"
+                      value="CLASS_DEF" />
+            <property name="tag" value="@author"/>
+            <property name="tagSeverity" value="ignore"/>
+        </module>
+
+        <!-- Enforce JavaDoc above public + protected methods-->
+        <module name="JavadocVariable">
+            <property name="scope" value="protected"/>
+        </module>
+
+        <!-- Enforce comments above methods -->
+        <module name="MatchXpath">
+            <property name="query"
+                      value="//METHOD_DEF[not(MODIFIERS/*[self::SINGLE_LINE_COMMENT or self::BLOCK_COMMENT_BEGIN]) and not(TYPE/*[self::SINGLE_LINE_COMMENT or self::BLOCK_COMMENT_BEGIN])]"/>
+            <message key="matchxpath.match"
+                     value="Method declarations must have a preceding comment."/>
+        </module>
+        <!-- Enforce JavaDoc above public + protected methods-->
+        <module name="MissingJavadocMethod">
+            <property name="scope" value="protected"/>
+        </module>
+        <!-- Enforce method JavaDocs to include @param and @return tags when relevant -->
+        <module name="JavadocMethod">
+            <property name="validateThrows" value="true"/>
+        </module>
+
+        <!-- Enforce descriptions after tags in JavaDocs -->
+        <module name="NonEmptyAtclauseDescription"/>
+
+    </module>
+
+    <!-- Ensure lines are no longer than 110 characters-->
+    <module name="LineLength">
+        <property name="max" value="110"/>
+    </module>
+
+</module>
